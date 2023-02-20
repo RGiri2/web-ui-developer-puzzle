@@ -68,5 +68,20 @@ form {
   justify-content: center;
   min-height: 50vh;
   font-size: 1.5rem;
-  color: $gray40;
+  color: $gray60;
+}
+@media screen and (max-width: 600px) {
+  .book--content {
+    flex-direction: column;
+  }
+  .book--content--info {
+    margin-top: 15px;
+  }
+  .book--title {
+    font-size: small;
+  }
+  .book--content--cover {
+    display: flex;
+    justify-content: center;
+  }
 }
