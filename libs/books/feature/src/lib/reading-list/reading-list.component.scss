@@ -21,6 +21,13 @@
   }
 }
 
+.reading-list-finish{
+  color: rgb(48, 167, 44);
+}
+.buttons{
+  flex-direction: row;
+}
+
 .reading-list-item--cover {
   max-width: 36px;
   max-height: 36px;
