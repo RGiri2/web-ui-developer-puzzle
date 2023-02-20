@@ -69,8 +69,41 @@ describe('Books Reducer', () => {
       });
 
       const result: State = reducer(state, action);
-
       expect(result.ids).toEqual(['A', 'B', 'C']);
+    });
+
+    it('confirmedUndoAddBookToReadingList should undo adding book to the reading list', () => {
+      const book = createBook('C');
+      const action = ReadingListActions.confirmedUndoAddBookToReadingList({
+        book,
+      });
+      const result: State = reducer(state, action);
+      expect(result.ids).toEqual(['A', 'B']);
+    });
+
+    it('failedUndoAddBookToReadingList should not undo adding book to the reading list', () => {
+      const action = ReadingListActions.failedUndoAddBookToReadingList({
+        book: createBook('C'),
+      });
+      const result: State = reducer(state, action);
+      expect(result.ids).toEqual(['A', 'B', 'C']);
+    });
+
+    it('confirmedUndoRemoveFromReadingList should undo removing book from the reading list', () => {
+      const item = createReadingListItem('C');
+      const action = ReadingListActions.confirmedUndoRemoveFromReadingList({
+        item,
+      });
+      const result: State = reducer(state, action);
+      expect(result.ids).toEqual(['A', 'B', 'C']);
+    });
+
+    it('failedUndoRemoveFromReadingList should not undo remove book from the reading list', () => {
+      const action = ReadingListActions.failedUndoRemoveFromReadingList({
+        item: createReadingListItem('C'),
+      });
+      const result: State = reducer(state, action);
+      expect(result.ids).toEqual(['A', 'B']);
     });
   });
 
